@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/Assets/Fonts/EduNSWACTCursive-Bold.ttf",
+      "sha1": "7d53cfb40d263a9b22d29215bd4909cc8309f76d"
+    },
+    {
+      "path": "src/Assets/Fonts/EduNSWACTCursive-Medium.ttf",
+      "sha1": "c532e0116cb2a96491ebbd4f197927a061a3add3"
+    },
+    {
+      "path": "src/Assets/Fonts/EduNSWACTCursive-Regular.ttf",
+      "sha1": "dafa9960996eeef1907b07b7665ed6367dbcd0c6"
+    },
+    {
+      "path": "src/Assets/Fonts/EduNSWACTCursive-SemiBold.ttf",
+      "sha1": "606ee29b01bd6504fa595b8526bbede04d68c6c7"
+    },
+    {
+      "path": "src/Assets/Fonts/Poppins-Bold.ttf",
+      "sha1": "875cf0cecd647bcf22e79d633d868c1b1ec98dfa"
+    },
+    {
+      "path": "src/Assets/Fonts/Poppins-Medium.ttf",
+      "sha1": "283f21b44efbdbf276ba802be2d949a36bbc4233"
+    },
+    {
+      "path": "src/Assets/Fonts/Poppins-Regular.ttf",
+      "sha1": "fdd3002e7d814ee47c1c1b8487c72c6bbb3a2d00"
+    },
+    {
+      "path": "src/Assets/Fonts/Poppins-SemiBold.ttf",
+      "sha1": "8a4ace9392d06bcb7f8ea2f5169b07e4c383a90d"
+    }
+  ]
+}

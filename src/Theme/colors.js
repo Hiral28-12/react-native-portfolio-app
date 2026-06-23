@@ -3,7 +3,7 @@ const colors = {
   secondary: '#9333EA',
   accent: '#06B6D4',
 
-  background: '#0F172A',
+  background: '#000313',
   surface: '#1E293B',
   card: '#2D3748',
 

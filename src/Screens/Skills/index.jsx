@@ -1,32 +1,12 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import { View, Text } from 'react-native'
+import React from 'react'
 
-const SkillCard = ({title}) => {
+const SkillsScreen = () => {
   return (
-    <View style={styles.card}>
-      <Text style={styles.title}>
-        {title}
-      </Text>
+    <View>
+      <Text>Skills</Text>
     </View>
-  );
-};
+  )
+}
 
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#1E293B',
-    padding: 20,
-    borderRadius: 20,
-    marginBottom: 15,
-  },
-
-  title: {
-    color: '#fff',
-    fontWeight: '600',
-  },
-});
-
-export default SkillCard;
+export default SkillsScreen
