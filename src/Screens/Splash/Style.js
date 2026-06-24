@@ -23,17 +23,7 @@ export const styles = StyleSheet.create({
   },
 
   nextButton: {
-    backgroundColor: colors.secondary,
     marginHorizontal: spacing.xl,
     marginBottom: spacing.xxl + spacing.lg,
-    height: 55,
-    borderRadius: spacing.borderRadius.lg,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  nextText: {
-    ...typography.h4,
-    color: colors.white,
   },
 });

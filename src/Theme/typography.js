@@ -1,3 +1,5 @@
+import { Dimensions } from 'react-native';
+
 export const fonts = {
   Poppins: {
     Bold: 'Poppins-Bold',
@@ -5,6 +7,12 @@ export const fonts = {
     Medium: 'Poppins-Medium',
     Regular: 'Poppins-Regular',
     Light: 'Poppins-Light',
+  },
+  Cursive: {
+    Bold: 'DancingScript-Bold',
+    SemiBold: 'DancingScript-SemiBold',
+    Medium: 'DancingScript-Medium',
+    Regular: 'DancingScript-Regular',
   },
 };
 
@@ -54,41 +62,47 @@ export const spacing = {
   },
 };
 
-
 export const typography = {
   h1: {
     fontFamily: fonts.Poppins.Bold,
     fontSize: fontSize.h1,
     lineHeight: lineHeight.h1,
   },
-
   h2: {
     fontFamily: fonts.Poppins.SemiBold,
     fontSize: fontSize.h2,
     lineHeight: lineHeight.h2,
   },
-
   h3: {
     fontFamily: fonts.Poppins.SemiBold,
     fontSize: fontSize.h3,
     lineHeight: lineHeight.h3,
   },
-
   body: {
     fontFamily: fonts.Poppins.Regular,
     fontSize: fontSize.body,
     lineHeight: lineHeight.body,
   },
-
   bodySmall: {
     fontFamily: fonts.Poppins.Regular,
     fontSize: fontSize.bodySmall,
     lineHeight: lineHeight.bodySmall,
   },
-
   caption: {
     fontFamily: fonts.Poppins.Light,
     fontSize: fontSize.caption,
     lineHeight: lineHeight.caption,
   },
+  cursiveTitle: {
+    fontFamily: fonts.Cursive.Bold,
+    fontSize: fontSize.h1,
+    lineHeight: lineHeight.h1,
+  },
+  cursiveBody: {
+    fontFamily: fonts.Cursive.Regular,
+    fontSize: fontSize.body,
+    lineHeight: lineHeight.body,
+  },
 };
+
+export const { width, height } = Dimensions.get('window');

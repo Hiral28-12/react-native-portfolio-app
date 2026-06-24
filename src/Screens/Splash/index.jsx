@@ -1,20 +1,14 @@
 import React, { useRef, useState } from 'react';
-import {
-  View,
-  FlatList,
-  Dimensions,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import { View, FlatList, TouchableOpacity, Text } from 'react-native';
+import GradientButton from '../../Components/GradientButton';
 import { styles } from './Style';
 import { Svgs } from '../../Assets/SVG';
-
-const BackIcon = Svgs.back;
+import { width } from '../../Theme/typography';
 import SplashItem from './Components/SplashItem';
 import PaginationDots from './Components/PaginationDots';
 import { splashData } from './Data/splashData';
-
-const { width } = Dimensions.get('window');
+import screenNames from '../index';
+import colors from '../../Theme/colors';
 
 const SplashScreen = ({ navigation }) => {
   const flatListRef = useRef(null);
@@ -26,12 +20,12 @@ const SplashScreen = ({ navigation }) => {
         index: currentIndex + 1,
       });
     } else {
-      navigation.replace('Home');
+      navigation.replace(screenNames.HOME);
     }
   };
 
   const handleSkip = () => {
-    navigation.replace('Home');
+    navigation.replace(screenNames.HOME);
   };
 
   const handleBack = () => {
@@ -43,7 +37,7 @@ const SplashScreen = ({ navigation }) => {
       <View style={styles.topRow}>
         {currentIndex > 0 ? (
           <TouchableOpacity onPress={handleBack}>
-            <BackIcon width={24} height={24} fill="#9333EA" />
+            <Svgs.back width={24} height={24} fill={colors.secondary} />
           </TouchableOpacity>
         ) : (
           <View />
@@ -73,11 +67,11 @@ const SplashScreen = ({ navigation }) => {
 
       <PaginationDots currentIndex={currentIndex} total={splashData.length} />
 
-      <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-        <Text style={styles.nextText}>
-          {currentIndex === splashData.length - 1 ? 'Get Started' : 'Next'}
-        </Text>
-      </TouchableOpacity>
+      <GradientButton
+        title={currentIndex === splashData.length - 1 ? 'Get Started' : 'Next'}
+        onPress={handleNext}
+        style={styles.nextButton}
+      />
     </View>
   );
 };

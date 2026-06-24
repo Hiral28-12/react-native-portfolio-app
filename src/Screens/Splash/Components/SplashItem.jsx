@@ -1,15 +1,20 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import colors from '../../../Theme/colors';
-import { typography, spacing } from '../../../Theme/typography';
-
-const { width } = Dimensions.get('window');
+import { typography, spacing, width } from '../../../Theme/typography';
 
 const SplashItem = ({ item }) => {
   return (
     <View style={styles.container}>
       <Image source={item.image} style={styles.image} />
-      <Text style={styles.title}>{item.title}</Text>
+      {item.titleCursive ? (
+        <Text style={styles.title}>
+          <Text style={styles.titleWhite}>{item.title} </Text>
+          <Text style={styles.titleCursive}>{item.titleCursive}</Text>
+        </Text>
+      ) : (
+        <Text style={styles.title}>{item.title}</Text>
+      )}
       <Text style={styles.subtitle}>{item.subtitle}</Text>
     </View>
   );
@@ -26,11 +31,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xxl,
   },
 
-  lottie: {
-    width: 280,
-    height: 280,
-  },
-
   image: {
     width: 450,
     height: 450,
@@ -39,9 +39,19 @@ const styles = StyleSheet.create({
 
   title: {
     ...typography.h2,
-    color: colors.textPrimary,
+    color: colors.white,
     textAlign: 'center',
     marginTop: spacing.xl,
+  },
+
+  titleWhite: {
+    ...typography.h2,
+    color: colors.white,
+  },
+
+  titleCursive: {
+    ...typography.cursiveTitle,
+    color: colors.secondary,
   },
 
   subtitle: {

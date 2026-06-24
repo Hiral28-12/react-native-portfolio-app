@@ -2,20 +2,20 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/Assets/Fonts/EduNSWACTCursive-Bold.ttf",
-      "sha1": "7d53cfb40d263a9b22d29215bd4909cc8309f76d"
+      "path": "src/Assets/Fonts/DancingScript-Bold.ttf",
+      "sha1": "40fe07b1708cf0cde98d01f7b196739ea3dab985"
     },
     {
-      "path": "src/Assets/Fonts/EduNSWACTCursive-Medium.ttf",
-      "sha1": "c532e0116cb2a96491ebbd4f197927a061a3add3"
+      "path": "src/Assets/Fonts/DancingScript-Medium.ttf",
+      "sha1": "df73d1ee6b9e3aa9eb6d692acbe12452daa01505"
     },
     {
-      "path": "src/Assets/Fonts/EduNSWACTCursive-Regular.ttf",
-      "sha1": "dafa9960996eeef1907b07b7665ed6367dbcd0c6"
+      "path": "src/Assets/Fonts/DancingScript-Regular.ttf",
+      "sha1": "a6c3a9b286cacd1efeef62942fff748cfd8b9722"
     },
     {
-      "path": "src/Assets/Fonts/EduNSWACTCursive-SemiBold.ttf",
-      "sha1": "606ee29b01bd6504fa595b8526bbede04d68c6c7"
+      "path": "src/Assets/Fonts/DancingScript-SemiBold.ttf",
+      "sha1": "a58fa6bef624bedf2c4184ac52cf695eee74b27d"
     },
     {
       "path": "src/Assets/Fonts/Poppins-Bold.ttf",

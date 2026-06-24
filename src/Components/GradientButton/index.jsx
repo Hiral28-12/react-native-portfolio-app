@@ -1,27 +1,67 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import colors from '../../Theme/colors';
+import { typography, spacing } from '../../Theme/typography';
 
-const GradientButton = ({ title, onPress }) => {
+const GradientButton = ({
+  title,
+  onPress,
+  style,
+  textStyle,
+  gradientColors = [colors.secondary, colors.primary, colors.accent],
+  outline = false,
+  height = 55,
+  borderRadius = spacing.borderRadius.lg,
+}) => {
+  if (outline) {
+    return (
+      <TouchableOpacity
+        onPress={onPress}
+        style={[styles.outlineBtn, { height, borderRadius }, style]}
+      >
+        <Text style={[styles.outlineText, textStyle]}>{title}</Text>
+      </TouchableOpacity>
+    );
+  }
+
   return (
-    <TouchableOpacity onPress={onPress}>
-      <LinearGradient colors={['#4F46E5', '#8B5CF6']} style={styles.button}>
-        <Text style={styles.text}>{title}</Text>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[{ borderRadius }, style]}
+      activeOpacity={0.8}
+    >
+      <LinearGradient
+        colors={gradientColors}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={[styles.gradient, { height, borderRadius }]}
+      >
+        <Text style={[styles.text, textStyle]}>{title}</Text>
       </LinearGradient>
     </TouchableOpacity>
   );
 };
 
+export default GradientButton;
+
 const styles = StyleSheet.create({
-  button: {
-    paddingVertical: 15,
-    borderRadius: 15,
+  gradient: {
+    justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    color: '#fff',
-    fontWeight: '700',
+    ...typography.h4,
+    color: colors.white,
+  },
+  outlineBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderColor: colors.secondary,
+  },
+  outlineText: {
+    ...typography.h4,
+    color: colors.white,
   },
 });
-
-export default GradientButton;
