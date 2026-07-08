@@ -7,7 +7,7 @@ import { width } from '../../Theme/typography';
 import SplashItem from './Components/SplashItem';
 import PaginationDots from './Components/PaginationDots';
 import { splashData } from './Data/splashData';
-import screenNames from '../index';
+import screenNames from '../../Constants/screenNames';
 import colors from '../../Theme/colors';
 
 const SplashScreen = ({ navigation }) => {

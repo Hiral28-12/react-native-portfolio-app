@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import screenNames, { Home, About, Skills, Project, Contact } from '../Screens';
+import { tabNames, Home, About, Skills, Project, Contact } from '../Screens';
 import colors from '../Theme/colors';
 import { typography } from '../Theme/typography';
 import { Svgs } from '../Assets/SVG';
@@ -9,11 +9,11 @@ import { Svgs } from '../Assets/SVG';
 const Tab = createBottomTabNavigator();
 
 const TAB_SVGS = {
-  [screenNames.HOME]: Svgs.home,
-  [screenNames.ABOUT]: Svgs.about,
-  [screenNames.SKILLS]: Svgs.skills,
-  [screenNames.PROJECTS]: Svgs.projects,
-  [screenNames.CONTACT]: Svgs.contact,
+  [tabNames.HOME]: Svgs.home,
+  [tabNames.ABOUT]: Svgs.about,
+  [tabNames.SKILLS]: Svgs.skills,
+  [tabNames.PROJECTS]: Svgs.projects,
+  [tabNames.CONTACT]: Svgs.contact,
 };
 
 const TabIcon = ({ name, focused }) => {
@@ -33,7 +33,7 @@ const MainTabNavigator = () => {
         headerShown: false,
         tabBarShowLabel: true,
         tabBarStyle: tabStyles.bar,
-        tabBarActiveTintColor: colors.secondary,
+        tabBarActiveTintColor: colors.white,
         tabBarInactiveTintColor: colors.textSecondary,
         tabBarLabelStyle: tabStyles.label,
         tabBarIcon: ({ focused }) => (
@@ -41,31 +41,11 @@ const MainTabNavigator = () => {
         ),
       })}
     >
-      <Tab.Screen
-        name={screenNames.HOME}
-        component={Home}
-        options={{ tabBarLabel: 'Home' }}
-      />
-      <Tab.Screen
-        name={screenNames.ABOUT}
-        component={About}
-        options={{ tabBarLabel: 'About' }}
-      />
-      <Tab.Screen
-        name={screenNames.SKILLS}
-        component={Skills}
-        options={{ tabBarLabel: 'Skills' }}
-      />
-      <Tab.Screen
-        name={screenNames.PROJECTS}
-        component={Project}
-        options={{ tabBarLabel: 'Projects' }}
-      />
-      <Tab.Screen
-        name={screenNames.CONTACT}
-        component={Contact}
-        options={{ tabBarLabel: 'Contact' }}
-      />
+      <Tab.Screen name={tabNames.HOME} component={Home} options={{ tabBarLabel: 'Home' }} />
+      <Tab.Screen name={tabNames.ABOUT} component={About} options={{ tabBarLabel: 'About' }} />
+      <Tab.Screen name={tabNames.SKILLS} component={Skills} options={{ tabBarLabel: 'Skills' }} />
+      <Tab.Screen name={tabNames.PROJECTS} component={Project} options={{ tabBarLabel: 'Projects' }} />
+      <Tab.Screen name={tabNames.CONTACT} component={Contact} options={{ tabBarLabel: 'Contact' }} />
     </Tab.Navigator>
   );
 };
@@ -84,10 +64,7 @@ const tabStyles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 10,
   },
-  label: {
-    ...typography.caption,
-    fontSize: 10,
-  },
+  label: { ...typography.caption, fontSize: 10 },
   iconWrap: {
     width: 32,
     height: 32,
@@ -95,8 +72,5 @@ const tabStyles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 8,
   },
-  iconWrapActive: {
-    backgroundColor: colors.primary + '33',
-  },
-
+  iconWrapActive: { backgroundColor: colors.primary + '33' },
 });

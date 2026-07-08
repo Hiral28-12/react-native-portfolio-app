@@ -3,7 +3,7 @@ import {
   View,
   Text,
   Image,
-  ScrollView,
+  ImageBackground,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
@@ -12,24 +12,43 @@ import LinearGradient from 'react-native-linear-gradient';
 import colors from '../../Theme/colors';
 import { typography, spacing, width } from '../../Theme/typography';
 import GradientButton from '../../Components/GradientButton';
+import { tabNames } from '../../Constants/screenNames';
+import RNBlobUtil from 'react-native-blob-util';
 import { Svgs } from '../../Assets/SVG';
+
+const downloadCV = async () => {
+  const src = RNBlobUtil.fs.asset('hiral_resume.pdf');
+  const dest = `${RNBlobUtil.fs.dirs.DownloadDir}/Hiral_Resume.pdf`;
+
+  await RNBlobUtil.fs.cp(src, dest);
+  RNBlobUtil.android.actionViewIntent(dest, 'application/pdf');
+
+  try {
+    await RNBlobUtil.fs.cp(src, dest);
+    RNBlobUtil.android.actionViewIntent(dest, 'application/pdf');
+  } catch (e) {
+    console.error('Download failed', e);
+  }
+};
 
 const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.safe}>
-      <ScrollView
-        contentContainerStyle={styles.scroll}
-        showsVerticalScrollIndicator={false}
+      <ImageBackground
+        source={require('../../Assets/Images/home_background.png')}
+        style={styles.bg}
+        resizeMode="cover"
       >
-        {/* Background orbs */}
-
         {/* Top bar */}
         <View style={styles.topBar}>
-          <Text style={styles.topBarTitle}>
+          <TouchableOpacity
+            style={styles.topBarTitle}
+            onPress={() => navigation.openDrawer()}
+          >
             <Svgs.menu width={24} height={24} fill={colors.white} />
-          </Text>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.bellWrap}>
-            <Text style={styles.bellIcon}>🔔</Text>
+            <Svgs.notification width={24} height={24} fill={colors.white} />
           </TouchableOpacity>
         </View>
 
@@ -65,32 +84,19 @@ const HomeScreen = ({ navigation }) => {
 
           {/* Buttons */}
           <GradientButton
-            title="⬇  Download CV"
-            onPress={() => {}}
+            title="Download CV"
+            icon={Svgs.download}
+            onPress={downloadCV}
             style={styles.btn}
           />
           <GradientButton
             title="Contact Me"
             outline
-            onPress={() => navigation.navigate('Contact')}
+            onPress={() => navigation.navigate(tabNames.CONTACT)}
             style={styles.btn}
           />
-
-          {/* Stats */}
-          {/* <View style={styles.statsRow}>
-            {[
-              { value: '2+', label: 'Years\nExperience' },
-              { value: '20+', label: 'Projects\nCompleted' },
-              { value: '10+', label: 'Happy\nClients' },
-            ].map((s, i) => (
-              <View key={i} style={styles.statItem}>
-                <Text style={styles.statValue}>{s.value}</Text>
-                <Text style={styles.statLabel}>{s.label}</Text>
-              </View>
-            ))} */}
-          {/* </View> */}
         </View>
-      </ScrollView>
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -98,9 +104,8 @@ const HomeScreen = ({ navigation }) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.background },
-  scroll: { paddingBottom: 40 },
-
+  safe: { flex: 1, paddingBottom: -30 },
+  bg: { width: '100%', height: '100%' },
   topBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -184,31 +189,5 @@ const styles = StyleSheet.create({
     lineHeight: 26,
   },
 
-  btn: {
-    width: width - spacing.xl * 2,
-    marginTop: spacing.md,
-  },
-
-  statsRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: width - spacing.xl * 2,
-    marginTop: spacing.xl,
-    backgroundColor: colors.surface,
-    borderRadius: spacing.borderRadius.xl,
-    paddingVertical: spacing.lg,
-    paddingHorizontal: spacing.lg,
-  },
-  statItem: { flex: 1, alignItems: 'center' },
-  statValue: {
-    fontFamily: 'Poppins-Bold',
-    fontSize: 22,
-    color: colors.secondary,
-  },
-  statLabel: {
-    ...typography.caption,
-    color: colors.textSecondary,
-    textAlign: 'center',
-    marginTop: 2,
-  },
+  btn: { width: width - spacing.xl * 2, marginTop: spacing.md },
 });

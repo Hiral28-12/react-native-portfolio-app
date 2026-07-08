@@ -13,6 +13,7 @@ const GradientButton = ({
   outline = false,
   height = 55,
   borderRadius = spacing.borderRadius.lg,
+  icon: Icon = null,
 }) => {
   if (outline) {
     return (
@@ -20,6 +21,7 @@ const GradientButton = ({
         onPress={onPress}
         style={[styles.outlineBtn, { height, borderRadius }, style]}
       >
+        {Icon && <Icon width={18} height={18} style={styles.icon} />}
         <Text style={[styles.outlineText, textStyle]}>{title}</Text>
       </TouchableOpacity>
     );
@@ -37,6 +39,14 @@ const GradientButton = ({
         end={{ x: 1, y: 0 }}
         style={[styles.gradient, { height, borderRadius }]}
       >
+        {Icon && (
+          <Icon
+            width={18}
+            height={18}
+            fill={colors.white}
+            style={styles.icon}
+          />
+        )}
         <Text style={[styles.text, textStyle]}>{title}</Text>
       </LinearGradient>
     </TouchableOpacity>
@@ -47,16 +57,20 @@ export default GradientButton;
 
 const styles = StyleSheet.create({
   gradient: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 8,
   },
   text: {
     ...typography.h4,
     color: colors.white,
   },
   outlineBtn: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 8,
     borderWidth: 1.5,
     borderColor: colors.secondary,
   },
