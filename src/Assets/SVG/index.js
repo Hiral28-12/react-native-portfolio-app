@@ -6,8 +6,12 @@ import ProjectsIcon from './projects.svg';
 import ContactIcon from './contact.svg';
 import RightIcon from './right.svg';
 import MenuIcon from './menu.svg';
-import Download from './download.svg';
-import Notification from './notification.svg';
+import DownloadIcon from './download.svg';
+import NotificationIcon from './notification.svg';
+import LinkedinIcon from './linkedin.svg';
+import GithubIcon from './github.svg';
+import MailIcon from './mail.svg';
+import WhatsappIcon from './whatsapp.svg';
 
 export const Svgs = {
   back: BackIcon,
@@ -18,6 +22,10 @@ export const Svgs = {
   contact: ContactIcon,
   right: RightIcon,
   menu: MenuIcon,
-  download: Download,
-  notification: Notification,
+  download: DownloadIcon,
+  notification: NotificationIcon,
+  linkedin: LinkedinIcon,
+  github: GithubIcon,
+  mail: MailIcon,
+  whatsapp: WhatsappIcon,
 };

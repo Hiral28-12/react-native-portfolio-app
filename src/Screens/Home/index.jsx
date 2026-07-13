@@ -2,19 +2,18 @@ import React from 'react';
 import {
   View,
   Text,
-  Image,
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import LinearGradient from 'react-native-linear-gradient';
 import colors from '../../Theme/colors';
 import { typography, spacing, width } from '../../Theme/typography';
 import GradientButton from '../../Components/GradientButton';
 import { tabNames } from '../../Constants/screenNames';
 import RNBlobUtil from 'react-native-blob-util';
 import { Svgs } from '../../Assets/SVG';
+import { GradientText } from '../../Utills/hooks';
 
 const downloadCV = async () => {
   const src = RNBlobUtil.fs.asset('hiral_resume.pdf');
@@ -47,36 +46,18 @@ const HomeScreen = ({ navigation }) => {
           >
             <Svgs.menu width={24} height={24} fill={colors.white} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.bellWrap}>
-            <Svgs.notification width={24} height={24} fill={colors.white} />
-          </TouchableOpacity>
         </View>
 
         {/* Greeting */}
         <View style={styles.content}>
           <Text style={styles.greeting}>Hi, I'm</Text>
           {/* Name */}
-          <Text style={styles.nameRow}>
-            <Text style={styles.nameCursive}>Hiral{'\n'}</Text>
-            <Text style={styles.nameCursive}>Prajapati</Text>
-          </Text>
+          <GradientText text={'Hiral\nPrajapati'} style={styles.nameCursive} />
 
           {/* Role */}
-          <Text style={styles.role}>Front-End & Back-End Developer</Text>
-
-          {/* Profile image */}
-          <View style={styles.imageWrap}>
-            <LinearGradient
-              colors={[colors.primary, colors.secondary, colors.accent]}
-              style={styles.imageGradientBorder}
-            >
-              <Image
-                source={require('../../Assets/Images/splash_developer.png')}
-                style={styles.profileImage}
-              />
-            </LinearGradient>
-          </View>
-
+          <Text style={styles.role}>
+            React Native & Front-End Web Developer
+          </Text>
           {/* Description */}
           <Text style={styles.description}>
             I build beautiful digital products that solve real problems.
@@ -85,7 +66,6 @@ const HomeScreen = ({ navigation }) => {
           {/* Buttons */}
           <GradientButton
             title="Download CV"
-            icon={Svgs.download}
             onPress={downloadCV}
             style={styles.btn}
           />
@@ -95,6 +75,20 @@ const HomeScreen = ({ navigation }) => {
             onPress={() => navigation.navigate(tabNames.CONTACT)}
             style={styles.btn}
           />
+          {/* Social Icons */}
+          <View style={styles.socialRow}>
+            <TouchableOpacity style={styles.socialButton}>
+              <Svgs.linkedin width={30} height={30} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.socialButton}>
+              <Svgs.github width={30} height={30} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.socialButton}>
+              <Svgs.mail width={30} height={30} />
+            </TouchableOpacity>
+          </View>
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -115,79 +109,56 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.sm,
   },
   topBarTitle: { ...typography.h3, color: colors.white },
-  bellWrap: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: colors.surface,
-    justifyContent: 'center',
-    alignItems: 'center',
+  content: {
+    paddingHorizontal: spacing.xl,
+    width: '60%',
+    marginTop: spacing.xxl,
   },
-  bellIcon: { fontSize: 18 },
-
-  content: { paddingHorizontal: spacing.xl, alignItems: 'center' },
-
   greeting: {
     ...typography.h3,
     color: colors.textSecondary,
     alignSelf: 'flex-start',
-    marginTop: spacing.xl,
+    marginTop: spacing.xxl,
   },
-
-  nameRow: { alignSelf: 'flex-start', marginTop: spacing.xs },
   nameCursive: {
+    marginTop: spacing.xs,
     fontFamily: 'DancingScript-Bold',
     fontSize: 40,
-    color: colors.secondary,
     lineHeight: 48,
   },
-
   role: {
     ...typography.bodySmall,
     color: colors.white,
     alignSelf: 'flex-start',
     marginTop: spacing.xs,
   },
-
-  imageWrap: { marginTop: spacing.xl, alignItems: 'center' },
-  imageGradientBorder: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    padding: 3,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  profileImage: {
-    width: 194,
-    height: 194,
-    borderRadius: 97,
-    resizeMode: 'cover',
-  },
-  badge: {
-    position: 'absolute',
-    bottom: 10,
-    right: width / 2 - 130,
-    backgroundColor: colors.surface,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: spacing.borderRadius.md,
-    borderWidth: 1,
-    borderColor: colors.secondary,
-  },
-  badgeText: {
-    color: colors.secondary,
-    fontFamily: 'Poppins-SemiBold',
-    fontSize: 14,
-  },
-
   description: {
     ...typography.body,
     color: colors.textSecondary,
-    textAlign: 'center',
+    textAlign: 'left',
     marginTop: spacing.xl,
     lineHeight: 26,
   },
+  btn: {
+    width: width - spacing.xxl * 10,
+    marginTop: spacing.xxl,
+    alignSelf: 'flex-start',
+  },
+  socialRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 30,
+  },
 
-  btn: { width: width - spacing.xl * 2, marginTop: spacing.md },
+  socialButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: 'rgba(255,255,255,0.08)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.15)',
+  },
 });

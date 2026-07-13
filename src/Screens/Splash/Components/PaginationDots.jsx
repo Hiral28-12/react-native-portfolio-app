@@ -1,16 +1,15 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { spacing } from '../../../Theme/typography';
+import colors from '../../../Theme/colors';
 
-const PaginationDots = ({currentIndex, total}) => {
+const PaginationDots = ({ currentIndex, total }) => {
   return (
     <View style={styles.container}>
       {[...Array(total)].map((_, index) => (
         <View
           key={index}
-          style={[
-            styles.dot,
-            currentIndex === index && styles.activeDot,
-          ]}
+          style={[styles.dot, currentIndex === index && styles.activeDot]}
         />
       ))}
     </View>
@@ -23,19 +22,15 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 40,
+    marginTop: spacing.md,
+    paddingBottom: spacing.xxxl + spacing.lg,
   },
-
   dot: {
     width: 8,
     height: 8,
     borderRadius: 10,
-    backgroundColor: '#555',
-    marginHorizontal: 4,
+    backgroundColor: colors.textTertiary,
+    marginHorizontal: spacing.xs,
   },
-
-  activeDot: {
-    backgroundColor: '#9333EA',
-    width: 22,
-  },
+  activeDot: { backgroundColor: colors.NeonPink, width: 22 },
 });

@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import colors from '../../Theme/colors';
 import { typography, spacing } from '../../Theme/typography';
 import { Svgs } from '../../Assets/SVG';
+import ContactCard from '../../Components/ContactCard';
 
 const ContactScreen = ({ navigation }) => {
   return (
@@ -17,6 +18,33 @@ const ContactScreen = ({ navigation }) => {
           <Svgs.notification width={24} height={24} fill={colors.white} />
         </TouchableOpacity>
       </View>
+      <ContactCard
+        icon={Svgs.contact}
+        title="Email"
+        value="hiralprajapati289@gmail.com"
+        onPress={() => {}}
+      />
+
+      <ContactCard
+        icon={Svgs.contact}
+        title="Phone"
+        value="+91 7600206518"
+        onPress={() => {}}
+      />
+
+      <ContactCard
+        icon={Svgs.contact}
+        title="LinkedIn"
+        value="linkedin.com/in/hiral-prajapati"
+        onPress={() => {}}
+      />
+
+      <ContactCard
+        icon={Svgs.contact}
+        title="GitHub"
+        value="github.com/Hiral28-12"
+        onPress={() => {}}
+      />
     </SafeAreaView>
   );
 };

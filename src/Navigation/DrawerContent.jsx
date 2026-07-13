@@ -38,7 +38,7 @@ const DrawerContent = ({ navigation }) => {
           style={styles.avatarBorder}
         >
           <Image
-            source={require('../Assets/Images/splash_developer.png')}
+            source={require('../Assets/Images/splash_dev.png')}
             style={styles.avatar}
           />
         </LinearGradient>
@@ -98,7 +98,11 @@ const styles = StyleSheet.create({
   },
   avatar: { width: 84, height: 84, borderRadius: 42, resizeMode: 'cover' },
   name: { ...typography.h3, color: colors.white, marginBottom: 4 },
-  role: { ...typography.caption, color: colors.white + 'CC', textAlign: 'center' },
+  role: {
+    ...typography.caption,
+    color: colors.white + 'CC',
+    textAlign: 'center',
+  },
 
   navList: { paddingTop: spacing.lg, paddingHorizontal: spacing.md },
   navItem: {

@@ -9,7 +9,7 @@ const GradientButton = ({
   onPress,
   style,
   textStyle,
-  gradientColors = [colors.secondary, colors.primary, colors.accent],
+  gradientColors = [colors.gradient[0], colors.gradient[1],colors.gradient[2]],
   outline = false,
   height = 55,
   borderRadius = spacing.borderRadius.lg,

@@ -5,10 +5,11 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import colors from '../../Theme/colors';
-import { typography, spacing, width } from '../../Theme/typography';
+import { typography, spacing } from '../../Theme/typography';
 import { Svgs } from '../../Assets/SVG';
 import { journey, stats } from '../../Constants/aboutData';
 
@@ -16,51 +17,53 @@ const AboutScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.safe}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <View style={styles.topBar}>
-          <TouchableOpacity onPress={() => navigation.openDrawer()}>
-            <Svgs.menu width={24} height={24} fill={colors.white} />
-          </TouchableOpacity>
-          <Text style={styles.topBarTitle}>About Me</Text>
-          <TouchableOpacity>
-            <Svgs.notification width={24} height={24} fill={colors.white} />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.content}>
-          <Text style={styles.cardBody}>
-            I'm a Front-End & Back-End Developer passionate about building
-            performant and beautiful web applications.
-          </Text>
-
-          {/* Stats */}
-          <View style={styles.statsRow}>
-            {stats.map((s, i) => (
-              <View key={i} style={styles.statItem}>
-                <Text style={styles.statValue}>{s.value}</Text>
-                <Text style={styles.statLabel}>{s.label}</Text>
-              </View>
-            ))}
+        <ImageBackground
+          source={require('../../Assets/Images/About_background.png')}
+          style={styles.bg}
+          resizeMode="cover"
+        >
+          {/* Header */}
+          <View style={styles.topBar}>
+            <TouchableOpacity onPress={() => navigation.openDrawer()}>
+              <Svgs.menu width={24} height={24} fill={colors.white} />
+            </TouchableOpacity>
+            <Text style={styles.topBarTitle}>About Me</Text>
           </View>
-          {/* My Journey */}
-          <Text style={styles.sectionTitle}>My Journey</Text>
-          <View style={styles.timeline}>
-            {journey.map((item, index) => (
-              <View key={index} style={styles.timelineItem}>
-                {/* Line + dot */}
-                <View style={styles.timelineLeft}>
-                  <View style={styles.dot} />
-                  {index < journey.length - 1 && <View style={styles.line} />}
+          <View style={styles.content}>
+            <Text style={styles.cardBody}>
+              I'm a Front-End & Back-End Developer passionate about building
+              performant and beautiful web applications.
+            </Text>
+
+            {/* Stats */}
+            <View style={styles.statsRow}>
+              {stats.map((s, i) => (
+                <View key={i} style={styles.statItem}>
+                  <Text style={styles.statValue}>{s.value}</Text>
+                  <Text style={styles.statLabel}>{s.label}</Text>
                 </View>
-                {/* Content */}
-                <View style={styles.timelineContent}>
-                  <Text style={styles.timelineYear}>{item.year}</Text>
-                  <Text style={styles.timelineDesc}>{item.desc}</Text>
+              ))}
+            </View>
+            {/* My Journey */}
+            <Text style={styles.sectionTitle}>My Journey</Text>
+            <View style={styles.timeline}>
+              {journey.map((item, index) => (
+                <View key={index} style={styles.timelineItem}>
+                  {/* Line + dot */}
+                  <View style={styles.timelineLeft}>
+                    <View style={styles.dot} />
+                    {index < journey.length - 1 && <View style={styles.line} />}
+                  </View>
+                  {/* Content */}
+                  <View style={styles.timelineContent}>
+                    <Text style={styles.timelineYear}>{item.year}</Text>
+                    <Text style={styles.timelineDesc}>{item.desc}</Text>
+                  </View>
                 </View>
-              </View>
-            ))}
+              ))}
+            </View>
           </View>
-        </View>
+        </ImageBackground>
       </ScrollView>
     </SafeAreaView>
   );
@@ -70,15 +73,20 @@ export default AboutScreen;
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
+  bg: { width: '100%', height: '100%' },
   topBar: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.md,
     paddingBottom: spacing.sm,
   },
-  topBarTitle: { ...typography.h3, color: colors.white },
+  topBarTitle: {
+    ...typography.h3,
+    color: colors.white,
+    marginLeft: spacing.md,
+  },
   content: { paddingHorizontal: spacing.xl },
   cardBody: {
     ...typography.bodySmall,
