@@ -4,14 +4,13 @@ import {
   Text,
   ScrollView,
   StyleSheet,
-  TouchableOpacity,
   ImageBackground,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import colors from '../../Theme/colors';
 import { typography, spacing } from '../../Theme/typography';
-import { Svgs } from '../../Assets/SVG';
 import { journey, stats } from '../../Constants/aboutData';
+import Header from '../../Components/Header';
 
 const AboutScreen = ({ navigation }) => {
   return (
@@ -22,13 +21,11 @@ const AboutScreen = ({ navigation }) => {
           style={styles.bg}
           resizeMode="cover"
         >
-          {/* Header */}
-          <View style={styles.topBar}>
-            <TouchableOpacity onPress={() => navigation.openDrawer()}>
-              <Svgs.menu width={24} height={24} fill={colors.white} />
-            </TouchableOpacity>
-            <Text style={styles.topBarTitle}>About Me</Text>
-          </View>
+          <Header
+            navigation={navigation}
+            title="About Me"
+            showNotification={true}
+          />
           <View style={styles.content}>
             <Text style={styles.cardBody}>
               I'm a Front-End & Back-End Developer passionate about building
@@ -74,19 +71,6 @@ export default AboutScreen;
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
   bg: { width: '100%', height: '100%' },
-  topBar: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingHorizontal: spacing.xl,
-    paddingTop: spacing.md,
-    paddingBottom: spacing.sm,
-  },
-  topBarTitle: {
-    ...typography.h3,
-    color: colors.white,
-    marginLeft: spacing.md,
-  },
   content: { paddingHorizontal: spacing.xl },
   cardBody: {
     ...typography.bodySmall,

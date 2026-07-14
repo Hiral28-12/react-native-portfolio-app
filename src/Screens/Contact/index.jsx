@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ImageBackground,
-} from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import colors from '../../Theme/colors';
-import { typography, spacing } from '../../Theme/typography';
+import ContactCard from './Components/ContactCard';
 import { Svgs } from '../../Assets/SVG';
-import ContactCard from '../../Components/ContactCard';
+import Header from '../../Components/Header';
 
 const ContactScreen = ({ navigation }) => {
   return (
@@ -20,15 +14,7 @@ const ContactScreen = ({ navigation }) => {
         style={styles.bg}
         resizeMode="cover"
       >
-        <View style={styles.topBar}>
-          <TouchableOpacity onPress={() => navigation.openDrawer()}>
-            <Svgs.menu width={24} height={24} fill={colors.white} />
-          </TouchableOpacity>
-          <Text style={styles.topBarTitle}>Contact Me</Text>
-          <TouchableOpacity>
-            <Svgs.notification width={24} height={24} fill={colors.white} />
-          </TouchableOpacity>
-        </View>
+        <Header navigation={navigation} title="Contact Me" />
         <ContactCard
           icon={Svgs.contact}
           title="Email"
@@ -65,13 +51,4 @@ export default ContactScreen;
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  topBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: spacing.xl,
-    paddingTop: spacing.md,
-    paddingBottom: spacing.sm,
-  },
-  topBarTitle: { ...typography.h3, color: colors.white },
 });

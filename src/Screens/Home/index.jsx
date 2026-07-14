@@ -13,7 +13,8 @@ import GradientButton from '../../Components/GradientButton';
 import { tabNames } from '../../Constants/screenNames';
 import RNBlobUtil from 'react-native-blob-util';
 import { Svgs } from '../../Assets/SVG';
-import { GradientText } from '../../Utills/hooks';
+import { GradientText } from '../../Utils/hooks';
+import Header from '../../Components/Header';
 
 const downloadCV = async () => {
   const src = RNBlobUtil.fs.asset('hiral_resume.pdf');
@@ -39,14 +40,16 @@ const HomeScreen = ({ navigation }) => {
         resizeMode="cover"
       >
         {/* Top bar */}
-        <View style={styles.topBar}>
+        {/* <View style={styles.topBar}>
           <TouchableOpacity
             style={styles.topBarTitle}
             onPress={() => navigation.openDrawer()}
           >
             <Svgs.menu width={24} height={24} fill={colors.white} />
           </TouchableOpacity>
-        </View>
+        </View> */}
+
+        <Header navigation={navigation} title="" showNotification={true} />
 
         {/* Greeting */}
         <View style={styles.content}>

@@ -7,6 +7,7 @@ import {
   View,
   ImageBackground,
 } from 'react-native';
+import Header from '../../Components/Header';
 import SkillCard from './Components/SkillCard';
 import OtherSkillCard from './Components/OtherSkillCard';
 import SoftSkillCard from './Components/SoftSkillCard';
@@ -17,7 +18,7 @@ import {
 } from '../../Constants/skillsData';
 import styles from './styles';
 
-const SkillsScreen = () => {
+const SkillsScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.safe}>
       <ImageBackground
@@ -27,7 +28,11 @@ const SkillsScreen = () => {
       >
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
-            <Text style={styles.heading}>Skills</Text>
+            <Header
+              navigation={navigation}
+              title="Skills"
+              showNotification={true}
+            />
             <Text style={styles.subHeading}>
               Technologies and tools I use to bring ideas to life.
             </Text>

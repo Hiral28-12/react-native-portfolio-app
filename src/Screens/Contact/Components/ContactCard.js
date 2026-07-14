@@ -1,37 +1,18 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-import colors from '../../Theme/colors';
-import {typography, spacing} from '../../Theme/typography';
-import {Svgs} from '../../Assets/SVG';
+import colors from '../../../Theme/colors';
+import { typography, spacing } from '../../../Theme/typography';
+import { Svgs } from '../../../Assets/SVG';
 
-const ContactCard = ({
-  icon,
-  title,
-  value,
-  onPress,
-}) => {
+const ContactCard = ({ icon, title, value, onPress }) => {
   const Icon = icon;
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      style={styles.card}
-      onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={onPress}>
       <View style={styles.leftContainer}>
         <View style={styles.iconContainer}>
-          {Icon && (
-            <Icon
-              width={22}
-              height={22}
-              fill={colors.primary}
-            />
-          )}
+          {Icon && <Icon width={22} height={22} fill={colors.primary} />}
         </View>
 
         <View style={styles.textContainer}>
@@ -40,11 +21,7 @@ const ContactCard = ({
         </View>
       </View>
 
-      <Svgs.right
-        width={18}
-        height={18}
-        fill={colors.white}
-      />
+      <Svgs.right width={18} height={18} fill={colors.white} />
     </TouchableOpacity>
   );
 };

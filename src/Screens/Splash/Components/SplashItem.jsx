@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import colors from '../../../Theme/colors';
 import { typography, spacing, width } from '../../../Theme/typography';
-import { GradientText } from '../../../Utills/hooks';
+import { GradientText } from '../../../Utils/hooks';
 import PaginationDots from './PaginationDots';
 
 const SplashItem = ({ item, currentIndex, total, onSkip }) => {

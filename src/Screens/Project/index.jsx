@@ -1,40 +1,86 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  FlatList,
-  View,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { View, Text, FlatList, ImageBackground } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './Style';
-import ProjectCard from '../../Components/ProjectCard';
-import projectsData from '../../Constants/projectsData';
-import { Svgs } from '../../Assets/SVG';
-import colors from '../../Theme/colors';
+import CategoryTabs from './Components/CategoryTabs';
+import ProjectCard from './Components/ProjectCard';
+import EmptyProjects from './Components/EmptyProjects';
+import projects, { categories } from '../../Constants/projectsData';
+import { GradientText } from '../../Utils/hooks';
+import Header from '../../Components/Header';
 
 const Project = ({ navigation }) => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          <Svgs.menu width={24} height={24} fill={colors.white} />
-        </TouchableOpacity>
-        <Text style={styles.heading}>My Projects</Text>
-        <TouchableOpacity>
-          <Svgs.notification width={24} height={24} fill={colors.white} />
-        </TouchableOpacity>
-      </View>
+  // Active Category
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
-      <FlatList
-        data={projectsData}
-        keyExtractor={item => item.id}
-        renderItem={({item}) => (
-          <ProjectCard item={item} />
-        )}
-        contentContainerStyle={styles.list}
-        showsVerticalScrollIndicator={false}
+  // Filter Projects
+  const filteredProjects = useMemo(() => {
+    if (selectedCategory === 'All') {
+      return projects;
+    }
+
+    return projects.filter(project => project.category === selectedCategory);
+  }, [selectedCategory]);
+
+  // Project Card
+  const renderProject = ({ item }) => {
+    return (
+      <ProjectCard
+        item={item}
+        onPress={() =>
+          navigation.navigate('ProjectDetails', {
+            project: item,
+          })
+        }
       />
+    );
+  };
 
+  // Empty List
+  const renderEmpty = () => {
+    return <EmptyProjects />;
+  };
+
+  return (
+    <SafeAreaView style={styles.safe}>
+      <ImageBackground
+        source={require('../../Assets/Images/skill_bg.png')}
+        style={styles.bg}
+        resizeMode="contain"
+      >
+        {/* Header */}
+        <Header navigation={navigation} title="Projects" />
+
+        {/* Title */}
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Things I've </Text>
+          <GradientText style={styles.titleGradient} text="Built" />
+
+          <Text style={styles.subTitle}>
+            Explore some of my recent mobile and web development projects built
+            with modern technologies.
+          </Text>
+        </View>
+
+        {/* Category Tabs */}
+        <View style={styles.tabContainer}>
+          <CategoryTabs
+            data={categories}
+            selected={selectedCategory}
+            onPress={setSelectedCategory}
+          />
+        </View>
+
+        {/* Project List */}
+        <FlatList
+          data={filteredProjects}
+          renderItem={renderProject}
+          keyExtractor={item => String(item.id)}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.listContainer}
+          ListEmptyComponent={renderEmpty}
+        />
+      </ImageBackground>
     </SafeAreaView>
   );
 };

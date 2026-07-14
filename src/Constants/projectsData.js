@@ -1,26 +1,56 @@
 export default [
   {
     id: '1',
-    title: 'StarQuik',
+    category: 'Mobile',
+    title: 'Portfolio App',
+    image: require('../Assets/Images/About_background.png'),
     description:
-      'Developed Wishlist feature, integrated Shopify GraphQL APIs, improved UI responsiveness and optimized Android performance.',
-    technologies: ['React Native', 'Redux', 'GraphQL', 'Android'],
-    color: '#7C3AED',
+      'A personal portfolio application showcasing skills, experience and projects.',
+    technologies: ['React Native', 'Redux Toolkit'],
+    github: '',
+    playstore: '',
   },
   {
     id: '2',
-    title: 'Vaastu Wisdom',
+    category: 'Mobile',
+    title: 'E-Commerce App',
+    image: require('../Assets/Images/About_background.png'),
     description:
-      'Built Compass module, JSON based dynamic data rendering and Android version compatibility improvements.',
-    technologies: ['React Native', 'Redux', 'JSON'],
-    color: '#2563EB',
+      'Shopping application with cart, wishlist and secure payments.',
+    technologies: ['React Native', 'REST API'],
   },
   {
     id: '3',
-    title: 'Watson',
-    description:
-      'Developed Shopify mobile application with Theme Settings, GraphQL APIs and reusable UI components.',
-    technologies: ['React Native', 'GraphQL', 'Axios'],
-    color: '#EC4899',
+    category: 'Mobile',
+    title: 'Task Manager',
+    image: require('../Assets/Images/About_background.png'),
+    description: 'Daily task management with categories and reminders.',
+    technologies: ['React Native', 'AsyncStorage'],
+  },
+  {
+    id: '4',
+    category: 'Web',
+    title: 'Creative Agency',
+    image: require('../Assets/Images/About_background.png'),
+    description: 'Landing website for creative agencies with responsive UI.',
+    technologies: ['ReactJS', 'Tailwind CSS'],
+  },
+  {
+    id: '5',
+    category: 'Web',
+    title: 'Admin Dashboard',
+    image: require('../Assets/Images/About_background.png'),
+    description: 'Analytics dashboard with multiple charts and reports.',
+    technologies: ['ReactJS', 'Recharts'],
+  },
+  {
+    id: '6',
+    category: 'Other',
+    title: 'Weather App',
+    image: require('../Assets/Images/About_background.png'),
+    description: 'Weather forecasting app using OpenWeather API.',
+    technologies: ['React Native', 'OpenWeather API'],
   },
 ];
+
+export const categories = ['All', 'Mobile', 'Web', 'Other'];
