@@ -1,12 +1,12 @@
 import React from 'react';
 import Svg, { Circle, Defs, LinearGradient, Stop } from 'react-native-svg';
 
-const CircularProgress = ({ size = 78, strokeWidth = 3, progress = 90 }) => {
+const CircularProgress = ({ size = 78, strokeWidth = 3 }) => {
   const radius = (size - strokeWidth) / 2;
 
   const circumference = 2 * Math.PI * radius;
 
-  const strokeDashoffset = circumference - (circumference * progress) / 100;
+  const strokeDashoffset = 0;
 
   return (
     <Svg width={size} height={size}>

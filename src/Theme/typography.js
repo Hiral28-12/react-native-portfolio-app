@@ -48,7 +48,7 @@ export const spacing = {
   lg: 16,
   xl: 20,
   xxl: 24,
-  xxxl:35,
+  xxxl: 35,
 
   screenPadding: 16,
   cardPadding: 20,
@@ -78,6 +78,11 @@ export const typography = {
     fontFamily: fonts.Poppins.SemiBold,
     fontSize: fontSize.h3,
     lineHeight: lineHeight.h3,
+  },
+  h4: {
+    fontFamily: fonts.Poppins.Medium,
+    fontSize: fontSize.h4,
+    lineHeight: lineHeight.h4,
   },
   body: {
     fontFamily: fonts.Poppins.Regular,

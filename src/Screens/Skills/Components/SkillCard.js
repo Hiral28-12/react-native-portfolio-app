@@ -11,10 +11,8 @@ const SkillCard = ({ item }) => {
   return (
     <GradientBorderView style={styles.wrapper}>
       <View style={styles.container}>
-        <Text style={styles.percent}>{item.percent}%</Text>
-
         <View style={styles.progress}>
-          <CircularProgress progress={item.percent} />
+          <CircularProgress />
 
           <View style={styles.iconContainer}>
             {Icon && <Icon width={35} height={35} />}
@@ -34,11 +32,6 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
     minHeight: 150,
     justifyContent: 'space-between',
-  },
-  percent: {
-    ...typography.bodySmall,
-    color: '#FFFFFF',
-    paddingBottom: spacing.sm,
   },
   progress: { justifyContent: 'center', alignItems: 'center' },
   iconContainer: { position: 'absolute' },

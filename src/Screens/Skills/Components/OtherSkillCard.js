@@ -10,7 +10,7 @@ const OtherSkillCard = ({ item }) => {
   return (
     <GradientBorderView style={styles.wrapper} borderRadius={14}>
       <View style={styles.container}>
-        {Icon && <Icon width={24} height={24} />}
+        {Icon && <Icon width={30} height={30} />}
         <Text style={styles.title}>{item.title}</Text>
       </View>
     </GradientBorderView>

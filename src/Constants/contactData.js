@@ -1,0 +1,66 @@
+import { Svgs } from '../Assets/SVG';
+
+const contactData = [
+  {
+    id: '1',
+    icon: Svgs.mail,
+    title: 'Email',
+    value: 'hiralprajapati289@gmail.com',
+    iconColor: '#8B5CF6',
+    borderColor: '#6D28D9',
+    actionType: 'email',
+    actionValue: 'hiralprajapati289@gmail.com',
+  },
+  {
+    id: '2',
+    icon: Svgs.whatsapp,
+    title: 'Phone',
+    value: '+91 7600206518',
+    iconColor: '#06B6D4',
+    borderColor: '#0891B2',
+    actionType: 'phone',
+    actionValue: '+917600206518',
+  },
+  {
+    id: '3',
+    icon: Svgs.contact,
+    title: 'Location',
+    value: 'Ahmedabad, Gujarat, India',
+    iconColor: '#8B5CF6',
+    borderColor: '#6D28D9',
+    actionType: 'none',
+    actionValue: '',
+  },
+  {
+    id: '4',
+    icon: Svgs.linkedin,
+    title: 'LinkedIn',
+    value: 'linkedin.com/in/hiral-prajapati-226200274',
+    iconColor: '#06B6D4',
+    borderColor: '#0891B2',
+    actionType: 'url',
+    actionValue: 'https://linkedin.com/in/hiral-prajapati-226200274',
+  },
+  {
+    id: '5',
+    icon: Svgs.github,
+    title: 'GitHub',
+    value: 'github.com/Hiral28-12',
+    iconColor: '#8B5CF6',
+    borderColor: '#6D28D9',
+    actionType: 'url',
+    actionValue: 'https://github.com/Hiral28-12',
+  },
+  {
+    id: '6',
+    icon: Svgs.about,
+    title: 'Portfolio',
+    value: 'hiralcreates.netlify.app',
+    iconColor: '#06B6D4',
+    borderColor: '#0891B2',
+    actionType: 'url',
+    actionValue: 'https://hiralcreates.netlify.app',
+  },
+];
+
+export default contactData;

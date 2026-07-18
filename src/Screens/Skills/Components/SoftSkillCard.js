@@ -10,14 +10,13 @@ const SoftSkillCard = ({ item }) => {
   return (
     <View style={styles.container}>
       <View style={styles.progress}>
-        <CircularProgress progress={item.percent} size={72} />
+        <CircularProgress size={72} />
 
         <View style={styles.iconContainer}>
-          {Icon && <Icon width={24} height={24} />}
+          {Icon && <Icon width={30} height={30} />}
         </View>
       </View>
 
-      <Text style={styles.percent}>{item.percent}%</Text>
       <Text style={styles.title}>{item.title}</Text>
     </View>
   );
@@ -27,12 +26,6 @@ const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', marginVertical: 15 },
   progress: { justifyContent: 'center', alignItems: 'center' },
   iconContainer: { position: 'absolute' },
-  percent: {
-    ...typography.bodySmall,
-    color: colors.white,
-    paddingBottom: spacing.sm,
-    marginTop: spacing.md,
-  },
   title: {
     ...typography.bodySmall,
     color: colors.white,
