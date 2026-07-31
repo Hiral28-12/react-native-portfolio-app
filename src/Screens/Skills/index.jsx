@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   ScrollView,
@@ -15,11 +15,24 @@ import {
   technicalSkills,
   otherSkills,
   softSkills,
+  skillTabs,
 } from '../../Constants/skillsData';
 import styles from './styles';
 import { GradientText } from '../../Utils/hooks';
+import CategoryTabs from '../../Components/CategoryTabs/CategoryTabs';
 
 const SkillsScreen = ({ navigation }) => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const filteredTechnicalSkills = useMemo(() => {
+    if (selectedCategory === 'All') {
+      return technicalSkills;
+    }
+    return technicalSkills.filter(skill =>
+      skill.categories?.includes(selectedCategory),
+    );
+  }, [selectedCategory]);
+
   return (
     <SafeAreaView style={styles.safe}>
       <ImageBackground
@@ -33,6 +46,7 @@ const SkillsScreen = ({ navigation }) => {
             <Header
               navigation={navigation}
               title="Skills"
+              titleSuffix=" Me"
               showNotification={true}
             />
             {/* Title */}
@@ -51,8 +65,15 @@ const SkillsScreen = ({ navigation }) => {
             <View style={styles.sectionContainer}>
               {/* Technical Skills*/}
               <Text style={styles.sectionTitle}>Technical Skills</Text>
+              <View style={styles.tabContainer}>
+                <CategoryTabs
+                  data={skillTabs}
+                  selected={selectedCategory}
+                  onPress={setSelectedCategory}
+                />
+              </View>
               <FlatList
-                data={technicalSkills}
+                data={filteredTechnicalSkills}
                 numColumns={3}
                 scrollEnabled={false}
                 keyExtractor={item => item.id}
@@ -70,7 +91,7 @@ const SkillsScreen = ({ navigation }) => {
               <Text style={styles.sectionTitle}>Soft Skills</Text>
               <FlatList
                 data={softSkills}
-                numColumns={2}
+                numColumns={3}
                 scrollEnabled={false}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => <SoftSkillCard item={item} />}

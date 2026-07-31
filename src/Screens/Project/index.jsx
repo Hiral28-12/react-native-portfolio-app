@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { View, Text, FlatList, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './Style';
-import CategoryTabs from './Components/CategoryTabs';
+import CategoryTabs from '../../Components/CategoryTabs/CategoryTabs';
 import ProjectCard from './Components/ProjectCard';
 import EmptyProjects from './Components/EmptyProjects';
 import projects, { categories } from '../../Constants/projectsData';
@@ -49,7 +49,7 @@ const Project = ({ navigation }) => {
         resizeMode="contain"
       >
         {/* Header */}
-        <Header navigation={navigation} title="Projects" />
+        <Header navigation={navigation} title="Projects" titleSuffix=" Me"/>
 
         {/* Title */}
         <View style={styles.titleContainer}>

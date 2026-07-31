@@ -40,5 +40,6 @@ export default StyleSheet.create({
     textAlign: 'left',
     margin: spacing.md,
   },
+  tabContainer: { marginBottom: spacing.xl, marginTop: -spacing.lg },
   sectionContainer: { padding: spacing.md },
 });

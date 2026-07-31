@@ -21,7 +21,7 @@ const TabIcon = ({ name, focused }) => {
   const color = focused ? colors.white : colors.textSecondary;
   return (
     <View style={[tabStyles.iconWrap, focused && tabStyles.iconWrapActive]}>
-      <Icon width={22} height={22} fill={color} stroke={color} />
+      <Icon width={22} height={22} stroke={color} />
     </View>
   );
 };
@@ -41,11 +41,31 @@ const MainTabNavigator = () => {
         ),
       })}
     >
-      <Tab.Screen name={tabNames.HOME} component={Home} options={{ tabBarLabel: 'Home' }} />
-      <Tab.Screen name={tabNames.ABOUT} component={About} options={{ tabBarLabel: 'About' }} />
-      <Tab.Screen name={tabNames.SKILLS} component={Skills} options={{ tabBarLabel: 'Skills' }} />
-      <Tab.Screen name={tabNames.PROJECTS} component={Project} options={{ tabBarLabel: 'Projects' }} />
-      <Tab.Screen name={tabNames.CONTACT} component={Contact} options={{ tabBarLabel: 'Contact' }} />
+      <Tab.Screen
+        name={tabNames.HOME}
+        component={Home}
+        options={{ tabBarLabel: 'Home' }}
+      />
+      <Tab.Screen
+        name={tabNames.ABOUT}
+        component={About}
+        options={{ tabBarLabel: 'About' }}
+      />
+      <Tab.Screen
+        name={tabNames.SKILLS}
+        component={Skills}
+        options={{ tabBarLabel: 'Skills' }}
+      />
+      <Tab.Screen
+        name={tabNames.PROJECTS}
+        component={Project}
+        options={{ tabBarLabel: 'Projects' }}
+      />
+      <Tab.Screen
+        name={tabNames.CONTACT}
+        component={Contact}
+        options={{ tabBarLabel: 'Contact' }}
+      />
     </Tab.Navigator>
   );
 };

@@ -28,8 +28,8 @@ const contactData = [
     value: 'Ahmedabad, Gujarat, India',
     iconColor: '#8B5CF6',
     borderColor: '#6D28D9',
-    actionType: 'none',
-    actionValue: '',
+    actionType: 'location',
+    actionValue: 'Ahmedabad, Gujarat, India',
   },
   {
     id: '4',

@@ -1,12 +1,12 @@
 import BackIcon from './back.svg';
 import HomeIcon from './home.svg';
 import AboutIcon from './about.svg';
-import SkillsIcon from './heart.svg';
-import ProjectsIcon from './projects.svg';
+import SkillsIcon from './code.svg';
+import ProjectsIcon from './briefcase.svg';
 import ContactIcon from './contact.svg';
 import RightIcon from './right.svg';
 import MenuIcon from './menu.svg';
-import DownloadIcon from './download.svg';
+import FileIcon from './file.svg';
 import NotificationIcon from './notification.svg';
 import LinkedinIcon from './linkedin.svg';
 import GithubIcon from './github.svg';
@@ -32,6 +32,22 @@ import FirebaseIcon from './firebase.svg';
 import FigmaIcon from './figma.svg';
 import SpeedIcon from './speed.svg';
 import BugIcon from './bug.svg';
+import CancelIcon from './cancel.svg';
+import JourneyIcon from './journey.svg';
+import logoutIcon from './logout.svg';
+import settingsIcon from './settings.svg';
+import AndroidStudioIcon from './androidstudio.svg';
+import VscodeIcon from './vscode.svg';
+import PostmanIcon from './postman.svg';
+import CopilotIcon from './copilot.svg';
+import ClaudeIcon from './claude.svg';
+import ChatgptIcon from './chatgpt.svg';
+import SearchIcon from './search.svg';
+import shieldCheckIcon from './shieldcheck.svg';
+import PuzzleIcon from './puzzle.svg';
+import graduationCapIcon from './graduationcap.svg';
+import ClockIcon from './clock.svg';
+import ScssIcon from './scss.svg';
 
 export const Svgs = {
   back: BackIcon,
@@ -42,7 +58,7 @@ export const Svgs = {
   contact: ContactIcon,
   right: RightIcon,
   menu: MenuIcon,
-  download: DownloadIcon,
+  file: FileIcon,
   notification: NotificationIcon,
   linkedin: LinkedinIcon,
   github: GithubIcon,
@@ -68,4 +84,20 @@ export const Svgs = {
   group: GroupIcon,
   bulb: BulbIcon,
   target: TargetIcon,
+  cross: CancelIcon,
+  journey: JourneyIcon,
+  logout: logoutIcon,
+  settings: settingsIcon,
+  androidstudio: AndroidStudioIcon,
+  vscode: VscodeIcon,
+  postman: PostmanIcon,
+  copilot: CopilotIcon,
+  claude: ClaudeIcon,
+  chatgpt: ChatgptIcon,
+  search: SearchIcon,
+  shieldcheck: shieldCheckIcon,
+  graduationcap: graduationCapIcon,
+  puzzle: PuzzleIcon,
+  clock: ClockIcon,
+  scss: ScssIcon,
 };

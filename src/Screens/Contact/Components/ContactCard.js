@@ -31,7 +31,7 @@ const ContactCard = ({
             },
           ]}
         >
-          {Icon && <Icon width={22} height={22} fill={iconColor} />}
+          {Icon && <Icon width={22} height={22} stroke={iconColor} />}
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
@@ -41,7 +41,7 @@ const ContactCard = ({
         </View>
       </View>
       <View style={[styles.arrowContainer, { borderColor: iconColor }]}>
-        <Svgs.right width={14} height={14} fill={iconColor} />
+        <Svgs.right width={14} height={14} stroke={iconColor} />
       </View>
     </TouchableOpacity>
   );

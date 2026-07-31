@@ -22,7 +22,7 @@ export default StyleSheet.create({
   },
   divider: {
     width: 40,
-    height: 3,
+    height: 2,
     backgroundColor: colors.primary,
     borderRadius: 2,
     marginVertical: spacing.sm,
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     lineHeight: 22,
   },
   subTitleGradient: {
-    ...typography.bodySmall,
+    ...typography.body,
     marginBottom: spacing.xs,
   },
   sectionContainer: {

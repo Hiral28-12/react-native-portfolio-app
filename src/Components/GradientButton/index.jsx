@@ -9,7 +9,7 @@ const GradientButton = ({
   onPress,
   style,
   textStyle,
-  gradientColors = [colors.gradient[0], colors.gradient[1],colors.gradient[2]],
+  gradientColors = [colors.gradient[0], colors.gradient[1], colors.gradient[2]],
   outline = false,
   height = 55,
   borderRadius = spacing.borderRadius.lg,
@@ -21,7 +21,14 @@ const GradientButton = ({
         onPress={onPress}
         style={[styles.outlineBtn, { height, borderRadius }, style]}
       >
-        {Icon && <Icon width={18} height={18} style={styles.icon} />}
+        {Icon && (
+          <Icon
+            width={18}
+            height={18}
+            color={colors.white}
+            style={styles.icon}
+          />
+        )}
         <Text style={[styles.outlineText, textStyle]}>{title}</Text>
       </TouchableOpacity>
     );
@@ -41,9 +48,10 @@ const GradientButton = ({
       >
         {Icon && (
           <Icon
-            width={18}
-            height={18}
-            fill={colors.white}
+            width={24}
+            height={24}
+            stroke={colors.white}
+            color={colors.white}
             style={styles.icon}
           />
         )}

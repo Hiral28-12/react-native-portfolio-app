@@ -12,14 +12,16 @@ const SkillCard = ({ item }) => {
     <GradientBorderView style={styles.wrapper}>
       <View style={styles.container}>
         <View style={styles.progress}>
-          <CircularProgress />
+          <CircularProgress animated />
 
           <View style={styles.iconContainer}>
             {Icon && <Icon width={35} height={35} />}
           </View>
         </View>
 
-        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.title} numberOfLines={2}>
+          {item.title}
+        </Text>
       </View>
     </GradientBorderView>
   );
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     paddingVertical: 18,
-    minHeight: 150,
+    paddingHorizontal: spacing.sm,
     justifyContent: 'space-between',
   },
   progress: { justifyContent: 'center', alignItems: 'center' },
@@ -39,6 +41,12 @@ const styles = StyleSheet.create({
     ...typography.bodySmall,
     color: colors.white,
     marginTop: spacing.md,
+    textAlignVertical: 'center',
+    textAlign: 'center',
+    width: '100%',
+    maxWidth: 90,
+    lineHeight: 18,
+    height: 36,
   },
 });
 

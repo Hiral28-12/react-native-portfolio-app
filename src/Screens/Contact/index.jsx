@@ -26,11 +26,19 @@ const ContactScreen = ({ navigation }) => {
   });
 
   const handleCardPress = item => {
-    if (item.actionType === 'email')
+    if (item.actionType === 'email') {
       Linking.openURL(`mailto:${item.actionValue}`);
-    else if (item.actionType === 'phone')
+    } else if (item.actionType === 'phone') {
       Linking.openURL(`tel:${item.actionValue}`);
-    else if (item.actionType === 'url') Linking.openURL(item.actionValue);
+    } else if (item.actionType === 'url') {
+      Linking.openURL(item.actionValue);
+    } else if (item.actionType === 'location') {
+      Linking.openURL(
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          item.actionValue,
+        )}`,
+      );
+    }
   };
 
   const handleSend = () => {
@@ -58,7 +66,8 @@ const ContactScreen = ({ navigation }) => {
           <View style={styles.container}>
             <Header
               navigation={navigation}
-              title="Contact Me"
+              title="Contact"
+              titleSuffix=" Me"
               showNotification={true}
             />
 
