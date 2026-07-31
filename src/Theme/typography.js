@@ -104,6 +104,11 @@ export const typography = {
     fontSize: fontSize.h1,
     lineHeight: lineHeight.h1,
   },
+  cursiveSemi: {
+    fontFamily: fonts.Cursive.SemiBold,
+    fontSize: fontSize.h2,
+    lineHeight: lineHeight.h2,
+  },
   cursiveBody: {
     fontFamily: fonts.Cursive.Regular,
     fontSize: fontSize.body,

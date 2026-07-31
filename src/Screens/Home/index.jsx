@@ -13,7 +13,7 @@ import RNBlobUtil from 'react-native-blob-util';
 import { Svgs } from '../../Assets/SVG';
 import { GradientText } from '../../Utils/hooks';
 import Header from '../../Components/Header';
-import CircularProgress from '../Skills/Components/CircularProgress';
+import CircularProgress from '../../Components/CircularProgress';
 import styles from './style';
 
 const downloadCV = async () => {

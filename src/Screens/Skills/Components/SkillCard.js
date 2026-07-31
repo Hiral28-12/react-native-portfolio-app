@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import GradientBorderView from '../Components/GradientBorderView';
-import CircularProgress from './CircularProgress';
+import CircularProgress from '../../../Components/CircularProgress';
 import { Svgs } from '../../../Assets/SVG';
 import { spacing, typography } from '../../../Theme/typography';
 import colors from '../../../Theme/colors';

@@ -9,7 +9,6 @@ const CircularProgress = ({
 }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = 0;
   const rotation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -62,7 +61,7 @@ const CircularProgress = ({
         strokeWidth={strokeWidth}
         fill="none"
         strokeDasharray={circumference}
-        strokeDashoffset={strokeDashoffset}
+        strokeDashoffset={0}
         strokeLinecap="round"
         rotation="-90"
         origin={`${size / 2}, ${size / 2}`}

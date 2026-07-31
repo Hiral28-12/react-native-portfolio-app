@@ -20,7 +20,7 @@ import {
 } from '../../Constants/aboutData';
 import Header from '../../Components/Header';
 import { Svgs } from '../../Assets/SVG';
-import CircularProgress from '../Skills/Components/CircularProgress';
+import CircularProgress from '../../Components/CircularProgress';
 
 const AboutScreen = ({ navigation, route }) => {
   const scrollRef = useRef(null);

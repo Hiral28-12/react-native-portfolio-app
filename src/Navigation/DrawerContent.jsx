@@ -8,6 +8,8 @@ import {
   ScrollView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import RNBlobUtil from 'react-native-blob-util';
+import CircularProgress from '../Components/CircularProgress';
 import { useNavigationState } from '@react-navigation/native';
 import colors from '../Theme/colors';
 import { typography, spacing } from '../Theme/typography';
@@ -29,6 +31,7 @@ const NAV_ITEMS = [
   { label: 'Contact', route: tabNames.CONTACT, Icon: Svgs.contact },
   { label: 'Notifications', route: 'Notifications', Icon: Svgs.notification },
   { label: 'Resume', route: 'Resume', Icon: Svgs.file },
+  { label: 'Settings', route: 'Settings', Icon: Svgs.settings },
 ];
 
 const DrawerContent = ({ navigation }) => {
@@ -38,6 +41,30 @@ const DrawerContent = ({ navigation }) => {
     return tabState?.routeNames?.[tabState?.index];
   });
 
+  const handleResumePress = async () => {
+    const destPath = `${RNBlobUtil.fs.dirs.DownloadDir}/hiral_resume.pdf`;
+    const alreadyExists = await RNBlobUtil.fs.exists(destPath);
+    if (alreadyExists) {
+      RNBlobUtil.android.actionViewIntent(destPath, 'application/pdf');
+      return;
+    }
+    try {
+      const res = await RNBlobUtil.config({
+        path: destPath,
+        addAndroidDownloads: {
+          useDownloadManager: true,
+          notification: true,
+          title: 'hiral_resume.pdf',
+          description: 'Downloading resume...',
+          mime: 'application/pdf',
+        },
+      }).fetch('GET', 'https://hiralprajapati.dev/hiral_resume.pdf');
+      RNBlobUtil.android.actionViewIntent(res.path(), 'application/pdf');
+    } catch (e) {
+      console.log('Resume download error:', e);
+    }
+  };
+
   return (
     <View style={styles.root}>
       {/* Close button */}
@@ -46,7 +73,7 @@ const DrawerContent = ({ navigation }) => {
         onPress={() => navigation.closeDrawer()}
       >
         <Text style={styles.closeX}>
-          <Svgs.cross width={24} height={24} />
+          <Svgs.cross width={24} height={24} stroke={colors.white} />
         </Text>
       </TouchableOpacity>
 
@@ -56,15 +83,13 @@ const DrawerContent = ({ navigation }) => {
       >
         {/* Profile */}
         <View style={styles.profileSection}>
-          <LinearGradient
-            colors={['#D946EF', '#8B5CF6', '#06B6D4']}
-            style={styles.avatarBorder}
-          >
+          <View style={styles.avatarWrapper}>
+            <CircularProgress size={100} strokeWidth={3} animated />
             <Image
-              source={require('../Assets/Images/splash_dev.png')}
+              source={require('../Assets/Images/profil_illustration.png')}
               style={styles.avatar}
             />
-          </LinearGradient>
+          </View>
 
           <View style={styles.nameRow}>
             <Text style={styles.hiText}>Hi, I'm </Text>
@@ -92,8 +117,16 @@ const DrawerContent = ({ navigation }) => {
                       screen: tabNames.ABOUT,
                       params: { scrollToJourney: true },
                     });
-                  } else if (route !== 'Notifications' && route !== 'Resume') {
+                  } else if (
+                    route !== 'Notifications' &&
+                    route !== 'Resume' &&
+                    route !== 'Settings'
+                  ) {
                     navigation.navigate('Main', { screen: route });
+                  } else if (route === 'Resume') {
+                    handleResumePress();
+                  } else {
+                    navigation.navigate(route);
                   }
                 }}
               >
@@ -102,11 +135,11 @@ const DrawerContent = ({ navigation }) => {
                     colors={['#D946EF', '#8B5CF6']}
                     style={styles.iconWrapActive}
                   >
-                    <Icon width={20} height={20} />
+                    <Icon width={20} height={20} stroke={colors.white} />
                   </LinearGradient>
                 ) : (
                   <View style={styles.iconWrap}>
-                    <Icon width={20} height={20} />
+                    <Icon width={20} height={20} stroke={colors.white} />
                   </View>
                 )}
                 <Text
@@ -125,31 +158,23 @@ const DrawerContent = ({ navigation }) => {
           })}
         </View>
 
-        {/* Settings row (no separator line above) */}
-        <TouchableOpacity style={styles.navItem}>
-          <View style={styles.iconWrap}>
-            <Svgs.target width={20} height={20} />
-          </View>
-          <Text style={styles.navLabel}>Settings</Text>
-        </TouchableOpacity>
-
         {/* Astronaut illustration */}
         <Image
           source={require('../Assets/Images/drawer_illu.png')}
           style={styles.illustration}
-          resizeMode="contain"
+          resizeMode="cover"
         />
       </ScrollView>
 
       {/* Logout */}
-      <TouchableOpacity style={styles.logoutBtn}>
+      <TouchableOpacity style={styles.logoutBtn} onPress={() => navigation.navigate('Splash')}>
         <LinearGradient
           colors={['#D946EF33', '#8B5CF633']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={styles.logoutGradient}
         >
-          <Svgs.logout width={20} height={20} />
+          <Svgs.logout width={20} height={20} stroke={colors.white} />
           <Text style={styles.logoutText}>Logout</Text>
         </LinearGradient>
       </TouchableOpacity>
@@ -186,16 +211,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
   },
 
-  avatarBorder: {
+  avatarWrapper: {
     width: 100,
     height: 100,
-    borderRadius: 50,
-    padding: 3,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: spacing.md,
   },
-  avatar: { width: 94, height: 94, borderRadius: 47, resizeMode: 'cover' },
+  avatar: {
+    width: 94,
+    height: 94,
+    borderRadius: 47,
+    resizeMode: 'cover',
+    position: 'absolute',
+  },
 
   nameRow: {
     flexDirection: 'row',
@@ -203,7 +232,7 @@ const styles = StyleSheet.create({
     marginTop: spacing.sm,
   },
   hiText: { ...typography.h3, color: colors.white },
-  hiralText: { fontFamily: 'Poppins-SemiBold', fontSize: 20, lineHeight: 28 },
+  hiralText: { ...typography.cursiveSemi },
   wave: { fontSize: 20 },
 
   role: {

@@ -21,7 +21,7 @@ const Header = ({ navigation, title, showNotification = true, titleSuffix }) => 
       </View>
 
       {showNotification && (
-        <TouchableOpacity activeOpacity={0.8}>
+        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Notifications')}>
           <Svgs.notification width={24} height={24} fill={colors.white} />
         </TouchableOpacity>
       )}
